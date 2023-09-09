@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Todo from "./todo.jsx";
 
 //create your first component
 const Home = () => {
@@ -12,6 +13,10 @@ function addNewTodo() {
 
 	return (
 		<div className="container">
+
+			<div className="Title">
+				<h1>Todo List</h1>
+			</div>
 			<div className="input-group mb-3">
 				<input type="text" className="form-control" onChange={e => setNewTodo(e.target.value)} value={newTodo} id="add-todo" placeholder="New Todo"></input>
 				<div className="input-group-append">
@@ -19,7 +24,9 @@ function addNewTodo() {
 				</div>
 			</div>
 
-			
+			{list.map(l => (
+				<Todo text={l} />
+			))}
 		</div>
 	);
 };
