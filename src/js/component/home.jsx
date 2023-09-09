@@ -11,6 +11,12 @@ function addNewTodo() {
 	setList(list.concat(newTodo));
 }
 
+function deleteTodo(index){
+	setList(list.filter((l, i) => {
+		return i !== index
+	}));
+}
+
 	return (
 		<div className="container">
 
@@ -24,8 +30,8 @@ function addNewTodo() {
 				</div>
 			</div>
 
-			{list.map(l => (
-				<Todo text={l} />
+			{list.map((l, index) => (
+				<Todo text={l} index={index} deleteTodo={deleteTodo} />
 			))}
 		</div>
 	);
